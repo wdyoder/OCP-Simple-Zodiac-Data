@@ -1,0 +1,35 @@
+meta:
+  app_id: simple_zodiac_data
+  display_name: Simple Zodiac Data
+  version: 1.0.0-dev.1
+  vendor: zaius
+  summary: Adds a Zodiac Sign attribute to customers. For customers who have birthdates, calculates and sets the customers' Zodiac Sign.
+  support_url: https://www.verndale.com
+  contact_email: doug.yoder@verndale.com
+  categories:
+    - Data Quality & Enrichment
+  availability:
+    - us
+
+runtime: node18
+
+jobs:
+  single_run_zodiacs:
+    entry_point: SingleRunZodiacs
+    description: Performs a one-time calculation of Zodiac signs when triggered
+
+  hourly_zodiacs:
+    entry_point: HourlyZodiacs
+    # runs at 2 minutes past the hour
+    cron: 2 * * * *
+    description: Performs an hourly calculation of Zodiac signs
+
+liquid_extensions:
+  rot13:
+    entry_point: Rot13
+    description: Translate a string of text through a [ROT-13 transform](https://en.wikipedia.org/wiki/ROT13)
+    input:
+      value:
+        type: string
+        required: true
+        description: The string value to translate by rotating each letter 13 places
