@@ -25,12 +25,3 @@ jobs:
     # cron: 0 0 * * * ?
     description: Performs an hourly calculation of Zodiac signs
 
-liquid_extensions:
-  rot13:
-    entry_point: Rot13
-    description: Translate a string of text through a [ROT-13 transform](https://en.wikipedia.org/wiki/ROT13)
-    input:
-      value:
-        type: string
-        required: true
-        description: The string value to translate by rotating each letter 13 places
