@@ -1,8 +1,8 @@
 meta:
   app_id: simple_zodiac_data
   display_name: Simple Zodiac Data
-  version: 1.0.0-dev.1
-  vendor: zaius
+  version: 1.0.0-dev.4
+  vendor: verndale
   summary: Adds a Zodiac Sign attribute to customers. For customers who have birthdates, calculates and sets the customers' Zodiac Sign.
   support_url: https://www.verndale.com
   contact_email: doug.yoder@verndale.com
@@ -13,15 +13,16 @@ meta:
 
 runtime: node18
 
-jobs:
-  single_run_zodiacs:
-    entry_point: SingleRunZodiacs
-    description: Performs a one-time calculation of Zodiac signs when triggered
+functions:
+  trigger_zodiac_job:
+    entry_point: TriggerZodiacJob
+    description: Starts the CalculateZodiacs job
 
-  hourly_zodiacs:
-    entry_point: HourlyZodiacs
-    # runs at 2 minutes past the hour
-    cron: 2 * * * *
+jobs:
+  calculate_zodiacs:
+    entry_point: CalculateZodiacs
+    # runs every hour
+    # cron: 0 0 * * * ?
     description: Performs an hourly calculation of Zodiac signs
 
 liquid_extensions:

@@ -1,6 +1,6 @@
 name: customers
 fields:
-  - name: simple_zodiac_sign
+  - name: simple_zodiac_data_sign
     type: string
-    display_name: Simple Zodiac Sign
+    display_name: 'Simple Zodiac Data - Sign'
     description: The customer's Zodiac sign based on their birthdate.
